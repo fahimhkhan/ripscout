@@ -55,7 +55,7 @@ This project is based on:
 ### Publication
 RipScout: Realtime ML-Assisted Rip Current Detection and Automated Data Collection using UAVs
 
-### RipScout-Dataset
+### Dataset
 
 The dataset for training ML models are available in two formats in the following links:
 

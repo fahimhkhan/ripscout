@@ -7,6 +7,8 @@ Designed for ease of use, RipScout empowers even those unfamiliar with rip curre
 
 This repository builds upon the foundational work of [DJI iOS FPV Demo](https://github.com/DJI-Mobile-SDK-Tutorials/iOS-FPVDemo) and [TensorFlow Lite Object Detection](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/ios).  
 
+![RipScout](ripscout.png)
+
 ### Key Features  
 - **DJI Drone Integration**: Utilize DJI drones for autonomous and manual flights.  
 - **Real-time Object Detection**: AI-powered detection using TensorFlow Lite.  

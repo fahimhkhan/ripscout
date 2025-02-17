@@ -41,6 +41,9 @@ Launch the app on a connected iOS device.
 Connect your DJI drone.
 Start object detection using the AI model.
 
+### Disclaimer
+<p style="color:red;"><strong>Disclaimer:</strong> The RipScout application software was developed using the DJI Mobile SDK to be compatible with all DJI drones and was tested specifically on the DJI Phantom 4 Pro v2. However, as this software is a prototype, improper use may result in damage or loss of your Drone/UAV.</p>
+
 ### Acknowledgments
 This project is based on:
 

@@ -3,21 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		530F08FE27F9CA9B00A7B2DD /* FPVViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530F08FD27F9CA9B00A7B2DD /* FPVViewController2.swift */; };
 		53223C3027F071B70065E01C /* CameraFeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53223C2F27F071B70065E01C /* CameraFeedManager.swift */; };
 		53223C3227F071F50065E01C /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53223C3127F071F50065E01C /* PreviewView.swift */; };
 		53223C3527F073FC0065E01C /* detect.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 53223C3427F073FC0065E01C /* detect.tflite */; };
 		53223C3727F074050065E01C /* labelmap.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53223C3627F074050065E01C /* labelmap.txt */; };
-		53223C3B27F077460065E01C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53223C3A27F077460065E01C /* ViewController.swift */; };
-		53CACDBA27F56B9E00979AF9 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CACDB927F56B9E00979AF9 /* car.png */; };
-		53CACDBE27F5AC1A00979AF9 /* rip.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CACDBD27F5AC1A00979AF9 /* rip.png */; };
 		53CACDC027F5DA4500979AF9 /* FPVViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CACDBF27F5DA4500979AF9 /* FPVViewController1.swift */; };
 		53CACDC327F5DCA000979AF9 /* labelmap1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53CACDC127F5DCA000979AF9 /* labelmap1.txt */; };
 		53CACDC427F5DCA000979AF9 /* detect1.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 53CACDC227F5DCA000979AF9 /* detect1.tflite */; };
+		53CFA81A2A4DFD2A00E7DDE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CFA8192A4DFD2A00E7DDE9 /* MapViewController.swift */; };
+		53CFA81C2A4E076C00E7DDE9 /* mpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CFA81B2A4E076C00E7DDE9 /* mpViewController.swift */; };
+		53E06FF92A41A1330059A5FC /* FPVViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E06FF82A41A1330059A5FC /* FPVViewController2.swift */; };
 		53F09FA027DD5D340054E5E7 /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F09F9F27DD5D340054E5E7 /* ModelDataHandler.swift */; };
 		53F09FA527DDEF6E0054E5E7 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F09FA227DDEF6E0054E5E7 /* UIColorExtension.swift */; };
 		53F09FA627DDEF6E0054E5E7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F09FA327DDEF6E0054E5E7 /* StringExtension.swift */; };
@@ -28,22 +27,20 @@
 		A4FA8DE71F6BDD8000EBD60F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FA8DDF1F6BDD8000EBD60F /* Assets.xcassets */; };
 		A4FA8DE81F6BDD8000EBD60F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FA8DE01F6BDD8000EBD60F /* LaunchScreen.storyboard */; };
 		A4FA8DE91F6BDD8000EBD60F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FA8DE21F6BDD8000EBD60F /* Main.storyboard */; };
-		A4FA8DEA1F6BDD8000EBD60F /* FPVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA8DE41F6BDD8000EBD60F /* FPVViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2337660EE5B457B2F07A1FC7 /* Pods-FPVDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FPVDemo.release.xcconfig"; path = "Target Support Files/Pods-FPVDemo/Pods-FPVDemo.release.xcconfig"; sourceTree = "<group>"; };
-		530F08FD27F9CA9B00A7B2DD /* FPVViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVViewController2.swift; sourceTree = "<group>"; };
 		53223C2F27F071B70065E01C /* CameraFeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFeedManager.swift; sourceTree = "<group>"; };
 		53223C3127F071F50065E01C /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		53223C3427F073FC0065E01C /* detect.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = detect.tflite; sourceTree = "<group>"; };
 		53223C3627F074050065E01C /* labelmap.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labelmap.txt; sourceTree = "<group>"; };
-		53223C3A27F077460065E01C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		53CACDB927F56B9E00979AF9 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
-		53CACDBD27F5AC1A00979AF9 /* rip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rip.png; sourceTree = "<group>"; };
 		53CACDBF27F5DA4500979AF9 /* FPVViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVViewController1.swift; sourceTree = "<group>"; };
 		53CACDC127F5DCA000979AF9 /* labelmap1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labelmap1.txt; sourceTree = "<group>"; };
 		53CACDC227F5DCA000979AF9 /* detect1.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = detect1.tflite; sourceTree = "<group>"; };
+		53CFA8192A4DFD2A00E7DDE9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		53CFA81B2A4E076C00E7DDE9 /* mpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mpViewController.swift; sourceTree = "<group>"; };
+		53E06FF82A41A1330059A5FC /* FPVViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVViewController2.swift; sourceTree = "<group>"; };
 		53F09F9F27DD5D340054E5E7 /* ModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
 		53F09FA227DDEF6E0054E5E7 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		53F09FA327DDEF6E0054E5E7 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -55,7 +52,6 @@
 		A4FA8DDF1F6BDD8000EBD60F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4FA8DE11F6BDD8000EBD60F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4FA8DE31F6BDD8000EBD60F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A4FA8DE41F6BDD8000EBD60F /* FPVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPVViewController.swift; sourceTree = "<group>"; };
 		A4FA8DE51F6BDD8000EBD60F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B99666B95478FFC1266A707F /* Pods-FPVDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FPVDemo.debug.xcconfig"; path = "Target Support Files/Pods-FPVDemo/Pods-FPVDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C8051D79F3BBA641A930D05C /* Pods-DroneMLSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DroneMLSwift.release.xcconfig"; path = "Target Support Files/Pods-DroneMLSwift/Pods-DroneMLSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,12 +73,10 @@
 		53223C2D27F0710A0065E01C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A4FA8DE41F6BDD8000EBD60F /* FPVViewController.swift */,
 				53CACDBF27F5DA4500979AF9 /* FPVViewController1.swift */,
-				530F08FD27F9CA9B00A7B2DD /* FPVViewController2.swift */,
-				53223C3A27F077460065E01C /* ViewController.swift */,
-				53CACDBD27F5AC1A00979AF9 /* rip.png */,
-				53CACDB927F56B9E00979AF9 /* car.png */,
+				53E06FF82A41A1330059A5FC /* FPVViewController2.swift */,
+				53CFA8192A4DFD2A00E7DDE9 /* MapViewController.swift */,
+				53CFA81B2A4E076C00E7DDE9 /* mpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +232,9 @@
 				Base,
 			);
 			mainGroup = 86985CC01E834EC200577EC7;
+			packageReferences = (
+				5322B8662A2DA9D4009D2EDA /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+			);
 			productRefGroup = 86985CCA1E834EC200577EC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,9 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53CACDBE27F5AC1A00979AF9 /* rip.png in Resources */,
 				53CACDC427F5DCA000979AF9 /* detect1.tflite in Resources */,
-				53CACDBA27F56B9E00979AF9 /* car.png in Resources */,
 				53CACDC327F5DCA000979AF9 /* labelmap1.txt in Resources */,
 				53223C3527F073FC0065E01C /* detect.tflite in Resources */,
 				A4FA8DE91F6BDD8000EBD60F /* Main.storyboard in Resources */,
@@ -318,17 +313,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53CFA81A2A4DFD2A00E7DDE9 /* MapViewController.swift in Sources */,
 				53CACDC027F5DA4500979AF9 /* FPVViewController1.swift in Sources */,
-				53223C3B27F077460065E01C /* ViewController.swift in Sources */,
 				A4FA8DE61F6BDD8000EBD60F /* AppDelegate.swift in Sources */,
-				A4FA8DEA1F6BDD8000EBD60F /* FPVViewController.swift in Sources */,
-				530F08FE27F9CA9B00A7B2DD /* FPVViewController2.swift in Sources */,
 				53223C3227F071F50065E01C /* PreviewView.swift in Sources */,
 				53223C3027F071B70065E01C /* CameraFeedManager.swift in Sources */,
+				53CFA81C2A4E076C00E7DDE9 /* mpViewController.swift in Sources */,
 				53FF154727E715B7003BDB60 /* OverlayView.swift in Sources */,
 				53F09FA627DDEF6E0054E5E7 /* StringExtension.swift in Sources */,
 				53F09FA027DD5D340054E5E7 /* ModelDataHandler.swift in Sources */,
 				53F09FA527DDEF6E0054E5E7 /* UIColorExtension.swift in Sources */,
+				53E06FF92A41A1330059A5FC /* FPVViewController2.swift in Sources */,
 				53F09FA727DDEF6E0054E5E7 /* CVPixelBufferExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +443,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -467,8 +463,11 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/FPVDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fahimhasankhan.DroneMLSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -495,8 +494,11 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/FPVDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fahimhasankhan.DroneMLSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,6 +534,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5322B8662A2DA9D4009D2EDA /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 86985CC11E834EC200577EC7 /* Project object */;
 }

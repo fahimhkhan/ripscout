@@ -2,12 +2,12 @@
 //  FPVViewController2.swift
 //  DroneMLSwift
 //
-//  Created by Fahim Hasan Khan on 4/3/22.
-//  Copyright © 2022 DJI. All rights reserved.
+//  Created by Fahim Hasan Khan on 6/20/23.
+//  Copyright © 2023 DJI. All rights reserved.
 //
 
 //
-//  FPVViewController.swift
+//  FPVViewController1.swift
 //  iOS-FPVDemo-Swift
 //
 
@@ -15,7 +15,8 @@ import UIKit
 import DJISDK
 import DJIWidget
 
-class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManagerDelegate, DJICameraDelegate, DJIVideoPreviewerFrameControlDelegate {
+
+class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManagerDelegate, DJICameraDelegate, DJIVideoPreviewerFrameControlDelegate{
     
     var isRecording : Bool!
     var isMLrunning : Bool = false
@@ -23,32 +24,47 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
     
     var sample = 0
     
-    var temppixelbuffer: CVPixelBuffer!
+    var angle = 0
     
     let enableBridgeMode = false
     
     let bridgeAppIP = "10.81.52.50"
     
-
+    let loc1 = CLLocationCoordinate2DMake(36.9623600289201, -122.00799337527907) //Point A - Start
+    let loc2 = CLLocationCoordinate2DMake(36.96194853968823, -122.00609437128817) //Point B - Middle
+    let loc3 = CLLocationCoordinate2DMake(36.96121985538418, -122.00362673898361) //Point C - Finish
+    let wpAlt = 80.0 as Float
+    
     @IBOutlet var runMLBUtton: UIButton!
-    @IBOutlet var countLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet var recordTimeLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
+    @IBOutlet var AltButton: UIButton!
+    @IBOutlet var CirButton: UIButton!
     @IBOutlet var fpvView: PreviewView!
+    @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var overlayView: OverlayView!
-    @IBOutlet var sampleLabel: UILabel!
+    @IBOutlet weak var detStatus: UIButton!
+    @IBOutlet weak var showLoc: UIButton!
     
+ 
     // MARK: Constants
     private let displayFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
     private let edgeOffset: CGFloat = 2.0
     private let labelOffset: CGFloat = 10.0
 
-    var timer = Timer()
     // Holds the results at any time
     private var result: Result?
     // MARK: Controllers that manage functionality
     private var modelDataHandler: ModelDataHandler? =
-      ModelDataHandler(modelFileInfo: MobileNetSSD.modelInfo, labelsFileInfo: MobileNetSSD.labelsInfo)
+      ModelDataHandler(modelFileInfo: MobileNetSSDRip.modelInfo, labelsFileInfo: MobileNetSSDRip.labelsInfo)
+    
+    var flightController: DJIFlightController!
+    var timer: Timer?
+    var radians: Float = 0.0
+    let velocity: Float = 0.1
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +75,14 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
         
         DJISDKManager.registerApp(with: self)
         recordTimeLabel.isHidden = true
+
     }
 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-//        backgroundImage.image = UIImage(named: "car.png")
+//        backgroundImage.image = UIImage(named: "rip.png")
 //        backgroundImage.contentMode =  UIView.ContentMode.scaleToFill
 //        self.fpvView.insertSubview(backgroundImage, at: 0)
 //        self.imageML()
@@ -164,6 +181,7 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
         }
         
         //self.showAlertViewWithTitle(title:"Register App", withMessage: message)
+        self.debugLabel.text = message
     }
     
     func didUpdateDatabaseDownloadProgress(_ progress: Progress) {
@@ -179,25 +197,51 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
         self.recordTimeLabel.isHidden = !self.isRecording
         
         self.recordTimeLabel.text = formatSeconds(seconds: cameraState.currentVideoRecordingTimeInSeconds)
-        self.sampleLabel.text = String(sample)
+        
+        self.tiltGimbal(ang: self.angle)
         
         if (self.isRecording == true) {
-            self.recordButton.setTitle("Stop Recording", for: .normal)
+            self.recordButton.setTitle("Rip Detected!! Recording!", for: .normal)
             self.recordButton.setTitleColor(.systemGreen, for: .normal)
         } else {
-            self.recordButton.setTitle("Start Recording", for: .normal)
+            self.angle = -90
+            self.recordButton.setTitle("No Rip Detected!! Not Recording!", for: .normal)
             self.recordButton.setTitleColor(.systemRed, for: .normal)
         }
         
+        //Fahim - start recording autometically if Object of interest is detected
+        if (self.isDetected == true && self.isRecording == false){
+            
+            print("Timeline paused successfully")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                DJISDKManager.missionControl()?.pauseTimeline()
+            }
+            self.debugLabel.text = "Timeline paused successfully"
+            
+            //self.angle = -45
+            camera.startRecordVideo(completion: { (error) in
+                if let _ = error {
+                    NSLog("Start Record Video Error: " + String(describing: error))
+                }
+            })
+            self.isDetected = false
+        }
+        
         //Fahim - stopping recording autometically after certain time
-//        if (formatSeconds(seconds: cameraState.currentVideoRecordingTimeInSeconds) == "00:15"){
-//            camera.stopRecordVideo(completion: { (error) in
-//                if let _ = error {
-//                    NSLog("Stop Record Video Error: " + String(describing: error))
-//                }
-//            })
-//        }
-
+        if (formatSeconds(seconds: cameraState.currentVideoRecordingTimeInSeconds) == "00:15"){
+            camera.stopRecordVideo(completion: { (error) in
+                if let _ = error {
+                    NSLog("Stop Record Video Error: " + String(describing: error))
+                }
+            })
+            
+            print("Timeline resumed successfully")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                DJISDKManager.missionControl()?.resumeTimeline()
+            }
+            self.debugLabel.text = "Timeline resumed successfully"
+        }
+        
         //Update UISegmented Control's State
         
         //Fahim - setting video record mode as default
@@ -227,43 +271,15 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
         }
         sample = sample + 1
         //self.imageML()
-        //self.timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { _ in self.imageML()})
+
     }
     
     // MARK: DJIVideoFeedListener Method
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData rawData: Data) {
-        self.temppixelbuffer = fromData(rawData, width: 1280, height: 720, pixelFormat: kCVPixelFormatType_32ARGB)
-        
         let videoData = rawData as NSData
         let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: videoData.length)
         videoData.getBytes(videoBuffer, length: videoData.length)
         DJIVideoPreviewer.instance().push(videoBuffer, length: Int32(videoData.length))
-    }
-    
-    func fromData(_ data: Data, width: Int, height: Int, pixelFormat: OSType) -> CVPixelBuffer {
-        data.withUnsafeBytes { buffer in
-            var pixelBuffer: CVPixelBuffer!
-
-            let result = CVPixelBufferCreate(kCFAllocatorDefault, width, height, pixelFormat, nil, &pixelBuffer)
-            guard result == kCVReturnSuccess else { fatalError() }
-
-            CVPixelBufferLockBaseAddress(pixelBuffer, [])
-            defer { CVPixelBufferUnlockBaseAddress(pixelBuffer, []) }
-
-            var source = buffer.baseAddress!
-
-            for plane in 0 ..< CVPixelBufferGetPlaneCount(pixelBuffer) {
-                let dest      = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, plane)
-                let height      = CVPixelBufferGetHeightOfPlane(pixelBuffer, plane)
-                let bytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, plane)
-                let planeSize = height * bytesPerRow
-
-                memcpy(dest, source, planeSize)
-                source += planeSize
-            }
-
-            return pixelBuffer
-        }
     }
     
     func imageML(){
@@ -275,7 +291,7 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
         let img = renderer.image { ctx in fpvView.drawHierarchy(in: fpvView.bounds, afterScreenUpdates: true) }
         
         //let img1 = self.resizeImage(image: img, targetSize: CGSize(width: 200.0, height: 200.0))
-        //let img1 = img.resizeImageTo(size: CGSize(width: 300.0, height: 300.0))
+        //let img1 = img.resizeImageTo1(size: CGSize(width: 300.0, height: 300.0))
         
         //self.imageView.image = img
         //self.imageView2.image = img1
@@ -286,7 +302,6 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
         //let pixelbuffer: CVPixelBuffer? = buffer(from: img2!)
         
         self.runModel(onPixelBuffer: pixelbuffer!)
-        //self.runModel(onPixelBuffer: temppixelbuffer)
     }
     
     func buffer(from image: UIImage) -> CVPixelBuffer? {
@@ -325,8 +340,6 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
       guard let displayResult = result else {
         return
       }
-        //displayResult.inferences.count
-      self.countLabel.text = " Object Counted: " + String(displayResult.inferences.count)
 
       let width = CVPixelBufferGetWidth(pixelBuffer)
       let height = CVPixelBufferGetHeight(pixelBuffer)
@@ -350,9 +363,10 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
       //}
 
       var objectOverlays: [ObjectOverlay] = []
-      //let objectOverlayTest = ObjectOverlay(name: "Test", borderRect: CGRect(x: 100.0, y: 100.0, width: 200.0, height: 200.0), nameStringSize: CGSize(width: 90.0, height: 15.0), color: UIColor.red, font: self.displayFont)
+      //let objectOverlayTest = ObjectOverlay(name: "Test Rip", borderRect: CGRect(x: 100.0, y: 100.0, width: 200.0, height: 200.0), nameStringSize: CGSize(width: 90.0, height: 15.0), color: UIColor.red, font: self.displayFont)
       //objectOverlays.append(objectOverlayTest)
       
+    
       for inference in inferences {
 
         // Translates bounding box rect to current view.
@@ -381,13 +395,15 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
 
         let objectOverlay = ObjectOverlay(name: string, borderRect: convertedRect, nameStringSize: size, color: inference.displayColor, font: self.displayFont)
 
-        //if inference.className == "car" || inference.className == "person"{
-            objectOverlays.append(objectOverlay)
-        //}
+          //if inference.className == "car" || inference.className == "person"{
+        objectOverlays.append(objectOverlay)
+        self.isDetected = true
+          //}
       }
 
       // Hands off drawing to the OverlayView
       self.draw(objectOverlays: objectOverlays)
+
     }
 
     /** Calls methods to update overlay view with detected bounding boxes and class names.
@@ -397,6 +413,26 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
       self.overlayView.setNeedsDisplay()
     }
     
+    func tiltGimbal(ang: Int) {
+        let gimbal = DJISDKManager.product()?.gimbal
+        let rotation = DJIGimbalRotation(pitchValue: ang as NSNumber, rollValue: 0, yawValue: 0, time: 1, mode: .absoluteAngle, ignore: true)
+        gimbal?.rotate(with: rotation, completion: { (error) in
+            if error != nil {
+                print("Error rotating gimbal")
+                }
+            })
+        }
+ 
+    @IBAction func detAction(_ sender: UIButton) {
+        if (self.isDetected == false) {
+            self.isDetected = true
+            self.detStatus.setTitle("Det True!", for: .normal)
+        }
+        else {
+            self.isDetected = false
+            self.detStatus.setTitle("Det False!", for: .normal)
+        }
+    }
     
     
     @IBAction func recordAction(_ sender: UIButton) {
@@ -430,6 +466,149 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
     }
     
     
+    @IBAction func actionOrbit(_ sender: Any) {
+        self.linearMission()
+    }
+    
+    /// Set up the drone misison and strart its timeline
+    func linearMission() {
+        /// Check if the drone is connected
+        let product = DJISDKManager.product()
+        
+        //var alti = (flightControllerState.aircraftLocation?.altitude) ?? 0
+        
+        var debug_string = ""
+        self.debugLabel.text = debug_string
+
+        if (product?.model) != nil {
+            /// This is the array that holds all the timline elements to be executed later in order
+            var elements = [DJIMissionControlTimelineElement]()
+            
+            let takeOff = DJITakeOffAction()
+            elements.append(takeOff) // task number 1
+            
+            var debug_string = debug_string + ",Takeoff"
+            self.debugLabel.text = debug_string
+            
+            /// Set up and start a new waypoint mission
+            var mission: DJIWaypointMission?
+            guard let result = self.waypointSetup() else {return}
+            mission = result
+            elements.append(mission!) // task number 2
+            debug_string = debug_string + ",Waypoints"
+            self.debugLabel.text = debug_string
+            
+            /// This is the go home and landing action in which the drone goes back to its starting point when the first time started the mission
+            let goHomeLandingAction = DJIGoHomeAction()
+            elements.append(goHomeLandingAction) // task number 3
+            ///
+            debug_string = debug_string + ",RetHome"
+            self.debugLabel.text = debug_string
+            
+            /// Check if there is any error while appending the timeline mission to the array.
+            let error = DJISDKManager.missionControl()?.scheduleElements(elements)
+            if error != nil {
+                print("Error detected with the mission")
+            } else {
+                /// If there is no error then start the mission
+                print("Mission started successfully")
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    DJISDKManager.missionControl()?.startTimeline()
+                }
+            }
+        }
+    }
+    
+    @IBAction func showLocAction(_ sender: UIButton) {
+        ///SHOW CURRENT LOCATION
+        let coordinate = self.currentLocation()
+        let coordinateString = "\(coordinate.latitude), \(coordinate.longitude)"
+        self.debugLabel.text = coordinateString
+    }
+    
+    func currentLocation() -> CLLocationCoordinate2D {
+        /// Keep listening to the drone location included in latitude and longitude
+        guard let droneLocationKey = DJIFlightControllerKey(param: DJIFlightControllerParamAircraftLocation) else {
+            return CLLocationCoordinate2DMake(0, 0)
+        }
+        guard let droneLocationValue = DJISDKManager.keyManager()?.getValueFor(droneLocationKey) else {
+            return CLLocationCoordinate2DMake(0, 0)
+        }
+        let droneLocation = droneLocationValue.value as! CLLocation
+        let droneCoordinates = droneLocation.coordinate
+        /// Check if the returned coordinate value is valid or not
+        if !CLLocationCoordinate2DIsValid(droneCoordinates) {
+            return CLLocationCoordinate2DMake(0, 0)
+        }
+        return droneCoordinates
+    }
+    
+    
+    func waypointSetup() -> DJIWaypointMission? {
+            /// Define a new object class for the waypoint mission
+            let mission = DJIMutableWaypointMission()
+            
+            var debug_string = "waypointMission"
+            self.debugLabel.text = debug_string
+            
+            mission.maxFlightSpeed = 15
+            mission.autoFlightSpeed = 8
+            mission.finishedAction = .noAction
+            mission.headingMode = .usingInitialDirection
+            mission.flightPathMode = .normal
+            mission.rotateGimbalPitch = false /// Change this to True if you want the camera gimbal pitch to move between waypoints
+            mission.exitMissionOnRCSignalLost = true
+            mission.gotoFirstWaypointMode = .safely
+            mission.repeatTimes = 1
+            
+            debug_string = debug_string + ",ini"
+            self.debugLabel.text = debug_string
+        
+            let waypoint1 = DJIWaypoint(coordinate: loc1)
+            
+            waypoint1.altitude = self.wpAlt /// The altitude which the drone flies to as the first point and should be of type float
+            waypoint1.heading = 0 /// This is between [-180, 180] degrees, where the drone moves when reaching a waypoint. 0 means don't change the drone's heading
+            waypoint1.actionRepeatTimes = 1 /// Repeat this mission just for one time
+            waypoint1.actionTimeoutInSeconds = 60
+            // waypoint1.cornerRadiusInMeters = 5
+            waypoint1.turnMode = .clockwise /// When the drones changing its heading. It moves clockwise
+            waypoint1.gimbalPitch = 0
+        
+            debug_string = debug_string + ",w1"
+            self.debugLabel.text = debug_string
+            
+            
+            let waypoint2 = DJIWaypoint(coordinate: loc2)
+            waypoint2.altitude = self.wpAlt /// should be of type float
+            waypoint2.heading = 0
+            waypoint2.actionRepeatTimes = 1
+            waypoint2.actionTimeoutInSeconds = 60
+            waypoint2.turnMode = .clockwise
+            waypoint2.gimbalPitch = 0
+            
+            debug_string = debug_string + ",w2"
+            self.debugLabel.text = debug_string
+        
+            let waypoint3 = DJIWaypoint(coordinate: loc3)
+            waypoint3.altitude = self.wpAlt /// should be of type float
+            waypoint3.heading = 0
+            waypoint3.actionRepeatTimes = 1
+            waypoint3.actionTimeoutInSeconds = 60
+            waypoint3.turnMode = .clockwise
+            waypoint3.gimbalPitch = 0
+            
+            debug_string = debug_string + ",w3"
+            self.debugLabel.text = debug_string
+            
+            mission.add(waypoint1)
+            mission.add(waypoint2)
+            mission.add(waypoint3)
+            
+            debug_string = debug_string + ",ret"
+            self.debugLabel.text = debug_string
+            return DJIWaypointMission(mission: mission)
+        }
+    
     // MARK: DJIVideoPreviewerFrameControlDelegate Method
     func parseDecodingAssistInfo(withBuffer buffer: UnsafeMutablePointer<UInt8>!, length: Int32, assistInfo: UnsafeMutablePointer<DJIDecodingAssistInfo>!) -> Bool {
         return DJISDKManager.videoFeeder()?.primaryVideoFeed.parseDecodingAssistInfo(withBuffer: buffer, length: length, assistInfo: assistInfo) ?? false
@@ -457,3 +636,5 @@ class FPVViewController2: UIViewController,  DJIVideoFeedListener, DJISDKManager
     }
     
 }
+
+

@@ -52,8 +52,31 @@ This project is based on:
 [DJI iOS FPV Demo](https://github.com/DJI-Mobile-SDK-Tutorials/iOS-FPVDemo)
 [TensorFlow Lite Object Detection for iOS](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/ios)
 
-### Publication
-RipScout: Realtime ML-Assisted Rip Current Detection and Automated Data Collection using UAVs
+## Publication
+
+If you use any part of this code and dataset, please cite the following paper:
+
+**Text Citation:**
+
+F. H. Khan *et al.*, "RipScout: Realtime ML-Assisted Rip Current Detection and Automated Data Collection Using UAVs," in *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*, vol. 18, pp. 7742–7755, 2025, doi: [10.1109/JSTARS.2025.3543695](https://doi.org/10.1109/JSTARS.2025.3543695).
+
+**BibTeX Citation:**
+
+```bibtex
+@ARTICLE{10892036,
+  author={Khan, Fahim Hasan and Stewart, Donald and de Silva, Akila and Palinkas, Ashleigh and Dusek, Gregory and Davis, James and Pang, Alex},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, 
+  title={RipScout: Realtime ML-Assisted Rip Current Detection and Automated Data Collection Using UAVs}, 
+  year={2025},
+  volume={18},
+  number={},
+  pages={7742-7755},
+  keywords={Drones;Accuracy;Computational modeling;Data collection;Graphics processing units;Cameras;Visualization;Convolutional neural networks;Systems architecture;Servers;Computer vision;data collection;machine learning (ML);mobile computing;real-time processing;rip current detection;uncrewed aerial vehicle (UAVs)},
+  doi={10.1109/JSTARS.2025.3543695}
+}
+```
+
+Disclaimer: Please note that the current version of the code and dataset may not precisely correspond to the implementation described in the published paper, as ongoing updates and improvements are made periodically.
 
 ### Dataset
 
@@ -76,4 +99,3 @@ This project is licensed under the MIT License.
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-

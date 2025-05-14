@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,7 +22,7 @@
 		53F09FA627DDEF6E0054E5E7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F09FA327DDEF6E0054E5E7 /* StringExtension.swift */; };
 		53F09FA727DDEF6E0054E5E7 /* CVPixelBufferExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F09FA427DDEF6E0054E5E7 /* CVPixelBufferExtension.swift */; };
 		53FF154727E715B7003BDB60 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FF154627E715B7003BDB60 /* OverlayView.swift */; };
-		6AAFD9C32A1807360F059973 /* Pods_DroneMLSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3D519A95DD58BAA864496A /* Pods_DroneMLSwift.framework */; };
+		7B17296608B26FBAB376752B /* Pods_RipScout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556AE87638A93D1126493B35 /* Pods_RipScout.framework */; };
 		A4FA8DE61F6BDD8000EBD60F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA8DDE1F6BDD8000EBD60F /* AppDelegate.swift */; };
 		A4FA8DE71F6BDD8000EBD60F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FA8DDF1F6BDD8000EBD60F /* Assets.xcassets */; };
 		A4FA8DE81F6BDD8000EBD60F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FA8DE01F6BDD8000EBD60F /* LaunchScreen.storyboard */; };
@@ -31,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		2337660EE5B457B2F07A1FC7 /* Pods-FPVDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FPVDemo.release.xcconfig"; path = "Target Support Files/Pods-FPVDemo/Pods-FPVDemo.release.xcconfig"; sourceTree = "<group>"; };
+		431B91D3A7B9098E7279C472 /* Pods-RipScout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RipScout.release.xcconfig"; path = "Target Support Files/Pods-RipScout/Pods-RipScout.release.xcconfig"; sourceTree = "<group>"; };
 		53223C2F27F071B70065E01C /* CameraFeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFeedManager.swift; sourceTree = "<group>"; };
 		53223C3127F071F50065E01C /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		53223C3427F073FC0065E01C /* detect.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = detect.tflite; sourceTree = "<group>"; };
@@ -46,13 +47,14 @@
 		53F09FA327DDEF6E0054E5E7 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		53F09FA427DDEF6E0054E5E7 /* CVPixelBufferExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVPixelBufferExtension.swift; sourceTree = "<group>"; };
 		53FF154627E715B7003BDB60 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
-		5D3D519A95DD58BAA864496A /* Pods_DroneMLSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DroneMLSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86985CC91E834EC200577EC7 /* DroneMLSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DroneMLSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		556AE87638A93D1126493B35 /* Pods_RipScout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RipScout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86985CC91E834EC200577EC7 /* RipScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RipScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FA8DDE1F6BDD8000EBD60F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4FA8DDF1F6BDD8000EBD60F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4FA8DE11F6BDD8000EBD60F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4FA8DE31F6BDD8000EBD60F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A4FA8DE51F6BDD8000EBD60F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF2C81953E5FF062B85A456A /* Pods-RipScout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RipScout.debug.xcconfig"; path = "Target Support Files/Pods-RipScout/Pods-RipScout.debug.xcconfig"; sourceTree = "<group>"; };
 		B99666B95478FFC1266A707F /* Pods-FPVDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FPVDemo.debug.xcconfig"; path = "Target Support Files/Pods-FPVDemo/Pods-FPVDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C8051D79F3BBA641A930D05C /* Pods-DroneMLSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DroneMLSwift.release.xcconfig"; path = "Target Support Files/Pods-DroneMLSwift/Pods-DroneMLSwift.release.xcconfig"; sourceTree = "<group>"; };
 		ECB67FF364DABF45A3170581 /* Pods-DroneMLSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DroneMLSwift.debug.xcconfig"; path = "Target Support Files/Pods-DroneMLSwift/Pods-DroneMLSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AAFD9C32A1807360F059973 /* Pods_DroneMLSwift.framework in Frameworks */,
+				7B17296608B26FBAB376752B /* Pods_RipScout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +142,7 @@
 		86985CCA1E834EC200577EC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				86985CC91E834EC200577EC7 /* DroneMLSwift.app */,
+				86985CC91E834EC200577EC7 /* RipScout.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +172,8 @@
 				2337660EE5B457B2F07A1FC7 /* Pods-FPVDemo.release.xcconfig */,
 				ECB67FF364DABF45A3170581 /* Pods-DroneMLSwift.debug.xcconfig */,
 				C8051D79F3BBA641A930D05C /* Pods-DroneMLSwift.release.xcconfig */,
+				AF2C81953E5FF062B85A456A /* Pods-RipScout.debug.xcconfig */,
+				431B91D3A7B9098E7279C472 /* Pods-RipScout.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -177,7 +181,7 @@
 		D746CB6C1DD33127A45B7C06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5D3D519A95DD58BAA864496A /* Pods_DroneMLSwift.framework */,
+				556AE87638A93D1126493B35 /* Pods_RipScout.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,9 +189,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		86985CC81E834EC200577EC7 /* DroneMLSwift */ = {
+		86985CC81E834EC200577EC7 /* RipScout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 86985CDD1E834EC200577EC7 /* Build configuration list for PBXNativeTarget "DroneMLSwift" */;
+			buildConfigurationList = 86985CDD1E834EC200577EC7 /* Build configuration list for PBXNativeTarget "RipScout" */;
 			buildPhases = (
 				D626BB8233DB471549E6091D /* [CP] Check Pods Manifest.lock */,
 				86985CC51E834EC200577EC7 /* Sources */,
@@ -199,9 +203,9 @@
 			);
 			dependencies = (
 			);
-			name = DroneMLSwift;
+			name = RipScout;
 			productName = "SDK Swift Sample";
-			productReference = 86985CC91E834EC200577EC7 /* DroneMLSwift.app */;
+			productReference = 86985CC91E834EC200577EC7 /* RipScout.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +226,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 86985CC41E834EC200577EC7 /* Build configuration list for PBXProject "DroneMLSwift" */;
+			buildConfigurationList = 86985CC41E834EC200577EC7 /* Build configuration list for PBXProject "RipScout" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -233,13 +237,13 @@
 			);
 			mainGroup = 86985CC01E834EC200577EC7;
 			packageReferences = (
-				5322B8662A2DA9D4009D2EDA /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+				5322B8662A2DA9D4009D2EDA /* XCRemoteSwiftPackageReference "swift-async-algorithms.git" */,
 			);
 			productRefGroup = 86985CCA1E834EC200577EC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				86985CC81E834EC200577EC7 /* DroneMLSwift */,
+				86985CC81E834EC200577EC7 /* RipScout */,
 			);
 		};
 /* End PBXProject section */
@@ -268,7 +272,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DroneMLSwift/Pods-DroneMLSwift-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RipScout/Pods-RipScout-frameworks.sh",
 				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
 				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
 				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
@@ -281,7 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DroneMLSwift/Pods-DroneMLSwift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RipScout/Pods-RipScout-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D626BB8233DB471549E6091D /* [CP] Check Pods Manifest.lock */ = {
@@ -299,7 +303,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DroneMLSwift-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RipScout-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -452,7 +456,7 @@
 		};
 		86985CDE1E834EC200577EC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECB67FF364DABF45A3170581 /* Pods-DroneMLSwift.debug.xcconfig */;
+			baseConfigurationReference = AF2C81953E5FF062B85A456A /* Pods-RipScout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -483,7 +487,7 @@
 		};
 		86985CDF1E834EC200577EC7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8051D79F3BBA641A930D05C /* Pods-DroneMLSwift.release.xcconfig */;
+			baseConfigurationReference = 431B91D3A7B9098E7279C472 /* Pods-RipScout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -515,7 +519,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		86985CC41E834EC200577EC7 /* Build configuration list for PBXProject "DroneMLSwift" */ = {
+		86985CC41E834EC200577EC7 /* Build configuration list for PBXProject "RipScout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86985CDB1E834EC200577EC7 /* Debug */,
@@ -524,7 +528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		86985CDD1E834EC200577EC7 /* Build configuration list for PBXNativeTarget "DroneMLSwift" */ = {
+		86985CDD1E834EC200577EC7 /* Build configuration list for PBXNativeTarget "RipScout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86985CDE1E834EC200577EC7 /* Debug */,
@@ -536,7 +540,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5322B8662A2DA9D4009D2EDA /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+		5322B8662A2DA9D4009D2EDA /* XCRemoteSwiftPackageReference "swift-async-algorithms.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
 			requirement = {

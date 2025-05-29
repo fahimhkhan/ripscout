@@ -1,6 +1,6 @@
 # RipScout-Dataset
 
-The dataset for training ML models are available in two formats in the following links:
+The datasets for training ML models are available in two formats at the following links (we are currently in the process of updating them to the latest version):
 
 For training SSD-Mobilenet and EfficientDet family of models
 
